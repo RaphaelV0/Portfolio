@@ -208,7 +208,9 @@ export default function Experience() {
                 {/* Timeline verticale */}
                 <div className="max-w-4xl mx-auto relative">
                     {/* Ligne verticale centrale */}
-                    <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-0.5 bg-gradient-to-b from-violet-500 via-blue-500 to-teal-500 opacity-50"></div>
+                    <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-0.5 bg-gradient-to-b from-violet-500 via-blue-500 to-teal-500 opacity-50 hidden md:block"></div>
+                    {/* Ligne verticale mobile */}
+                    <div className="absolute left-4 top-0 h-full w-0.5 bg-gradient-to-b from-violet-500 via-blue-500 to-teal-500 opacity-50 md:hidden"></div>
 
                     {/* Éléments de la timeline */}
                     {filteredExperiences.map((exp, index) => (
@@ -218,11 +220,10 @@ export default function Experience() {
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.5, delay: index * 0.1 }}
                             viewport={{ once: true, amount: 0.1 }}
-                            className={`relative mb-12 ${index % 2 === 0 ? "left-timeline" : "right-timeline"
-                                }`}
+                            className="relative mb-12"
                         >
-                            <div className={`flex ${index % 2 === 0 ? "justify-end" : "justify-start"}`}>
-                                <div className={`w-full md:w-5/12 ${index % 2 === 0 ? "text-right mr-8" : "ml-8"}`}>
+                            <div className={`flex ${index % 2 === 0 ? "justify-start md:justify-end" : "justify-start"}`}>
+                                <div className={`w-full md:w-5/12 ${index % 2 === 0 ? "ml-8 md:ml-0 md:mr-8 md:text-right" : "ml-8"}`}>
                                     <motion.div
                                         whileHover={{ y: -5 }}
                                         className="bg-[#0a0a1a] p-6 rounded-xl border border-gray-800 hover:border-gray-700 transition-all duration-300 shadow-lg"
@@ -289,7 +290,14 @@ export default function Experience() {
                             </div>
 
                             {/* Point central de la timeline avec animation */}
-                            <div className="absolute top-6 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                            <div className={`
+                absolute top-6 
+                ${index % 2 === 0
+                                    ? "left-4 md:left-1/2"
+                                    : "left-4 md:left-1/2"
+                                } 
+                transform -translate-x-1/2 -translate-y-1/2
+            `}>
                                 <div className={`w-4 h-4 rounded-full bg-gradient-to-r ${getColorClass(exp.color)}`}>
                                     <div className="w-full h-full rounded-full animate-ping absolute bg-white opacity-30"></div>
                                 </div>
