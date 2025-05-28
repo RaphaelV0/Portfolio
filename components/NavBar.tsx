@@ -2,16 +2,12 @@
 
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
 
 export default function Navbar() {
-    const pathname = usePathname();
     const [scrolled, setScrolled] = useState(false);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [activeSection, setActiveSection] = useState("accueil");
 
-    // Menu items avec des ancres au lieu de pages
     const menuItems = [
         { name: "Accueil", href: "#accueil", id: "accueil" },
         { name: "Compétences", href: "#competences", id: "competences" },
@@ -28,7 +24,6 @@ export default function Navbar() {
                 setScrolled(false);
             }
 
-            // Détecter la section active au scroll
             const sections = menuItems.map(item => item.id);
 
             for (const section of sections.reverse()) {
@@ -47,9 +42,8 @@ export default function Navbar() {
         return () => {
             window.removeEventListener("scroll", handleScroll);
         };
-    }, []);
+    }, [menuItems]);
 
-    // Animation pour les items du menu
     const variants = {
         hidden: { opacity: 0, y: -10 },
         visible: (i) => ({
@@ -62,14 +56,13 @@ export default function Navbar() {
         })
     };
 
-    // Fonction pour gérer le scroll smooth
     const scrollToSection = (e, href) => {
         e.preventDefault();
         const targetId = href.replace('#', '');
         const element = document.getElementById(targetId);
         if (element) {
             window.scrollTo({
-                top: element.offsetTop - 80, // Offset pour la navbar
+                top: element.offsetTop - 80,
                 behavior: 'smooth'
             });
             setIsMenuOpen(false);
@@ -87,7 +80,6 @@ export default function Navbar() {
                 }`}
         >
             <div className="container mx-auto flex justify-between items-center">
-                {/* Logo animé */}
                 <motion.div
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
@@ -108,7 +100,6 @@ export default function Navbar() {
                     </a>
                 </motion.div>
 
-                {/* Desktop Menu */}
                 <div className="hidden md:flex items-center space-x-8">
                     {menuItems.map((item, index) => {
                         const isActive = activeSection === item.id;
@@ -129,10 +120,8 @@ export default function Navbar() {
                                 >
                                     <span className="relative z-10">{item.name}</span>
 
-                                    {/* Background hover effect */}
                                     <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-violet-500/20 via-blue-500/20 to-teal-500/20 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left rounded-md"></span>
 
-                                    {/* Active indicator */}
                                     {isActive && (
                                         <motion.span
                                             className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-violet-500 via-blue-500 to-teal-500"
@@ -141,7 +130,6 @@ export default function Navbar() {
                                         />
                                     )}
 
-                                    {/* Hover underline effect */}
                                     {!isActive && (
                                         <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-violet-400 via-blue-400 to-teal-400 transition-all duration-300 group-hover:w-full"></span>
                                     )}
@@ -151,7 +139,6 @@ export default function Navbar() {
                     })}
                 </div>
 
-                {/* Mobile Menu Button */}
                 <motion.button
                     className="md:hidden flex items-center justify-center w-10 h-10 relative z-50"
                     onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -175,7 +162,6 @@ export default function Navbar() {
                 </motion.button>
             </div>
 
-            {/* Mobile Menu with animations */}
             <motion.div
                 className="fixed inset-0 z-40 bg-[#050816]/95 backdrop-blur-lg md:hidden"
                 initial={{ opacity: 0, x: "100%" }}
@@ -233,7 +219,6 @@ export default function Navbar() {
                     })}
                 </motion.div>
 
-                {/* Décoratifs elements for futuristic look */}
                 <div className="absolute top-1/4 left-10 w-20 h-20 rounded-full bg-violet-500/5 blur-2xl" />
                 <div className="absolute bottom-1/4 right-10 w-32 h-32 rounded-full bg-teal-500/5 blur-2xl" />
             </motion.div>

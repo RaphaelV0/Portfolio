@@ -8,7 +8,7 @@ import { FaCheck, FaCopy } from "react-icons/fa";
 export default function Contact() {
   const [emailCopied, setEmailCopied] = useState(false);
 
-  const handleContactClick = (e) => {
+  const handleContactClick = () => {
     // On laisse le comportement par défaut du mailto: fonctionner
     
     // On copie également l'email dans le presse-papiers comme solution de secours

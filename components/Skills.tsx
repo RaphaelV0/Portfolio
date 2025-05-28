@@ -30,7 +30,7 @@ const skills = [
     }
 ];
 
-export default function Skills({ mousePosition }) {
+export default function Skills() {
     return (
         <section id="competences" className="py-24 relative">
             {/* Overlay léger spécifique à cette section */}
