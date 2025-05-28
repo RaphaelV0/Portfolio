@@ -23,8 +23,8 @@ const projects = [
         title: "Blog Personnel",
         description: "Plateforme de blog avec système de gestion de contenu, authentification et commentaires.",
         tags: ["Symfony", "PHP", "MySQL"],
-        image: "/blog-project.jpg", // À remplacer par une capture d'écran réelle
-        gradient: "from-teal-500 to-blue-500", // Garder le gradient pour ce projet
+        image: "/blog-project.jpg",
+        gradient: "from-teal-500 to-blue-500", 
         link: "https://github.com/INSSET/projets-2023-2024-RaphaelV0"
     }
 ];

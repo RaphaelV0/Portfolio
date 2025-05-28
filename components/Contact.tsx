@@ -1,9 +1,8 @@
 "use client";
 
-import { motion } from "framer-motion";
-import Link from "next/link";
 import { useState } from "react";
 import { FaCheck, FaCopy } from "react-icons/fa";
+import { motion } from "framer-motion";
 
 export default function Contact() {
   const [emailCopied, setEmailCopied] = useState(false);
@@ -11,7 +10,6 @@ export default function Contact() {
   const handleContactClick = () => {
     // On laisse le comportement par défaut du mailto: fonctionner
     
-    // On copie également l'email dans le presse-papiers comme solution de secours
     navigator.clipboard.writeText("raphaelverchain@gmail.com")
       .then(() => {
         setEmailCopied(true);
@@ -22,7 +20,7 @@ export default function Contact() {
         }, 3000);
       })
       .catch(err => {
-        console.error('Impossible de copier l\'email: ', err);
+        console.error("Impossible de copier l&apos;email: ", err);
       });
   };
 
@@ -43,7 +41,7 @@ export default function Contact() {
             Intéressé par mon profil ?
           </h2>
           <p className="text-gray-300 mb-8 max-w-2xl mx-auto">
-            N'hésitez pas à me contacter pour discuter de vos projets ou pour toute opportunité de collaboration.
+            N&apos;hésitez pas à me contacter pour discuter de vos projets ou pour toute opportunité de collaboration.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <div className="relative flex flex-col items-center">
