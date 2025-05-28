@@ -25,7 +25,7 @@ const projects = [
         tags: ["Symfony", "PHP", "MySQL"],
         image: "/blog-project.jpg",
         gradient: "from-teal-500 to-blue-500", 
-        link: "https://github.com/INSSET/projets-2023-2024-RaphaelV0"
+        link: "https://github.com/RaphaelV0/Blog-Symfony"
     }
 ];
 
