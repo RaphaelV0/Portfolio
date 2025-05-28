@@ -15,7 +15,7 @@ export default function Home() {
   const { scrollYProgress } = useScroll();
   
   useEffect(() => {
-    const handleMouseMove = (e) => {
+    const handleMouseMove = (e: MouseEvent) => {
       setMousePosition({ x: e.clientX, y: e.clientY });
     };
     
@@ -114,8 +114,8 @@ export default function Home() {
       {/* Contenu du site */}
       <div className="relative z-10">
         <Navbar />
-        <Hero mousePosition={mousePosition} />
-        <Skills mousePosition={mousePosition} />
+        <Hero />
+        <Skills  />
         <Experience />
         <Projects />
         <Contact />

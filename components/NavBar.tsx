@@ -46,7 +46,7 @@ export default function Navbar() {
 
     const variants = {
         hidden: { opacity: 0, y: -10 },
-        visible: (i) => ({
+        visible: (i: number) => ({
             opacity: 1,
             y: 0,
             transition: {
@@ -56,7 +56,7 @@ export default function Navbar() {
         })
     };
 
-    const scrollToSection = (e, href) => {
+    const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
         e.preventDefault();
         const targetId = href.replace('#', '');
         const element = document.getElementById(targetId);
