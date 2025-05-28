@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { FaCheck, FaCopy } from "react-icons/fa";
+import { FaCheck, FaCopy, FaLinkedin, FaGithub, FaTwitter } from "react-icons/fa";
 import { motion } from "framer-motion";
 
 export default function Contact() {
@@ -43,7 +43,9 @@ export default function Contact() {
           <p className="text-gray-300 mb-8 max-w-2xl mx-auto">
             N&apos;hésitez pas à me contacter pour discuter de vos projets ou pour toute opportunité de collaboration.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          
+          {/* Bouton principal */}
+          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-10">
             <div className="relative flex flex-col items-center">
               <motion.a 
                 href="mailto:raphaelverchain@gmail.com"
@@ -69,17 +71,14 @@ export default function Contact() {
                 </motion.div>
               )}
             </div>
-            
-            <motion.a 
-              href="/CV_Raphael_Verchain.pdf" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="px-8 py-3 bg-transparent border border-gray-700 hover:border-teal-500 rounded-full text-white font-medium hover:shadow-lg hover:shadow-teal-500/10 transition-all duration-300"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              Télécharger mon CV
-            </motion.a>
+          </div>
+      
+          
+          {/* Information supplémentaire */}
+          <div className="mt-10 pt-8 border-t border-gray-800">
+            <p className="text-gray-400 text-sm">
+              Basé à <span className="text-teal-400">Saint-Quentin, France</span> • Disponible pour des opportunités en <span className="text-violet-400">alternance</span> et <span className="text-blue-400">CDI</span>
+            </p>
           </div>
         </motion.div>
       </div>
