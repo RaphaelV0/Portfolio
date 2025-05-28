@@ -119,24 +119,27 @@ export default function Experience() {
             : sortedExperiences.filter(exp => exp.type === activeTab);
     }, [activeTab, sortedExperiences]);
 
-    // Génère les classes de couleur pour les gradients
+    // Définir un type pour les clés de couleur valides
+    type ColorKey = 'violet' | 'blue' | 'teal';
+
     const getColorClass = (color: string) => {
-        const colors = {
+        const colors: Record<ColorKey, string> = {
             violet: "from-violet-500 to-purple-700",
             blue: "from-blue-500 to-blue-700",
             teal: "from-teal-500 to-teal-700"
         };
-        return colors[color] || colors.violet;
+        // Utiliser une assertion de type
+        return colors[color as ColorKey] || colors.violet;
     };
 
-    // Génère les classes de couleur pour les icônes
     const getIconColorClass = (color: string) => {
-        const colors = {
+        const colors: Record<ColorKey, string> = {
             violet: "text-violet-400",
             blue: "text-blue-400",
             teal: "text-teal-400"
         };
-        return colors[color] || colors.violet;
+        // Utiliser une assertion de type
+        return colors[color as ColorKey] || colors.violet;
     };
 
     return (
