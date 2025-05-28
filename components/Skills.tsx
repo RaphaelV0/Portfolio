@@ -7,7 +7,7 @@ const skills = [
     {
         icon: <FaCode className="text-4xl text-violet-400" />,
         title: "Front-End",
-        description: "Création d&apos;interfaces modernes et réactives avec des frameworks JavaScript avancés.",
+        description: "Création d'interfaces modernes et réactives avec des frameworks JavaScript avancés.",
         technologies: ["Vue.js", "React", "TypeScript", "JavaScript", "Tailwind CSS"]
     },
     {
@@ -25,7 +25,7 @@ const skills = [
     {
         icon: <FaTools className="text-4xl text-blue-400" />,
         title: "Outils",
-        description: "Utilisation d&apos;outils modernes pour un développement efficace et collaboratif.",
+        description: "Utilisation d'outils modernes pour un développement efficace et collaboratif.",
         technologies: ["Git", "Docker", "Figma", "Trello", "VS Code", "IntelliJ"]
     }
 ];
