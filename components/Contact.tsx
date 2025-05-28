@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { FaCheck, FaCopy, FaLinkedin, FaGithub, FaTwitter } from "react-icons/fa";
+import { FaCheck, FaCopy} from "react-icons/fa";
 import { motion } from "framer-motion";
 
 export default function Contact() {
