@@ -15,7 +15,7 @@ const experiences = [
         description: "Formation avancée axée sur les technologies cloud, la mobilité et les architectures distribuées.",
         details: [
             "Architecture Micro-services et Conteneurisation (Docker, Kubernetes)",
-            "Mise en place de pipelines CI/CD (GitHub Actions, GitLab CI)",
+            "Mise en place de pipelines CI/CD (GitHub Actions)",
             "Infrastructure as Code et Cloud Computing",
             "Administration Système Linux et Scripting avancé"
         ],

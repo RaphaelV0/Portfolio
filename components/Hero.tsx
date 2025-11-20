@@ -5,6 +5,7 @@ import Avatar from "./Avatar";
 import AnimatedText from "./AnimatedText";
 import SocialLinks from "./SocialLink";
 
+
 export default function Hero() {
     return (
         <section id="accueil" className="relative min-h-screen overflow-hidden text-white flex items-center justify-center">
