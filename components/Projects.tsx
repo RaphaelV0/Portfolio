@@ -16,7 +16,7 @@ const projects = [
         description: "Plateforme pour l'Association des Étudiants en Sciences d'Amiens avec gestion d'événements et espace membre.",
         tags: ["Vue.js", "Tailwind CSS", "Symfony", "MySQL", "Docker"],
         image: "/Projet/AESA.jpg",
-        link: "https://aesa-amiens.fr",
+        link: "https://github.com/RaphaelV0/AESA",
         gradient: null // Pas de gradient pour ce projet
     },
     {
