@@ -21,7 +21,7 @@ const experiences = [
         ],
         icon: <FaGraduationCap />,
         color: "violet"
-    }
+    },
     {
         id: 1,
         type: "education",
