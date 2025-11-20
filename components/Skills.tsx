@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { FaCode, FaLaptopCode, FaServer, FaTools } from "react-icons/fa";
+import { FaCode, FaLaptopCode, FaServer, FaCloud } from "react-icons/fa"; // Remplacer FaTools par FaCloud
 
 const skills = [
     {
@@ -14,7 +14,7 @@ const skills = [
         icon: <FaServer className="text-4xl text-blue-400" />,
         title: "Back-End",
         description: "Développement de serveurs et APIs robustes adaptés aux besoins des projets.",
-        technologies: ["Symfony ", "Node.js", "Express", "Python", "PHP", "SQL"]
+        technologies: ["Symfony", "Node.js", "Express", "Python", "PHP", "SQL"]
     },
     {
         icon: <FaLaptopCode className="text-4xl text-teal-400" />,
@@ -23,10 +23,10 @@ const skills = [
         technologies: ["TypeScript", "JavaScript", "Python", "PHP", "REST API"]
     },
     {
-        icon: <FaTools className="text-4xl text-blue-400" />,
-        title: "Outils",
-        description: "Utilisation d'outils modernes pour un développement efficace et collaboratif.",
-        technologies: ["Git", "Docker", "Figma", "Trello", "VS Code", "IntelliJ"]
+        icon: <FaCloud className="text-4xl text-violet-400" />, // Nouvelle icône et couleur
+        title: "DevOps & Cloud", // Nouveau titre
+        description: "Automatisation des déploiements, conteneurisation et gestion d'infrastructure.",
+        technologies: ["Docker", "Kubernetes", "CI/CD", "GitHub Actions", "Linux", "Git"] // Nouvelles technos
     }
 ];
 

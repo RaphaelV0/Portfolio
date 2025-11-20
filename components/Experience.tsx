@@ -7,6 +7,22 @@ import { FaGraduationCap, FaBriefcase, FaHandsHelping } from "react-icons/fa";
 // Données d'expérience structurées
 const experiences = [
     {
+        id: 0,
+        type: "education",
+        title: "Master Cloud, Computing & Mobility",
+        location: "INSSET, Saint-Quentin",
+        date: "Septembre 2025 - Juin 2027",
+        description: "Formation avancée axée sur les technologies cloud, la mobilité et les architectures distribuées.",
+        details: [
+            "Architecture Micro-services et Conteneurisation (Docker, Kubernetes)",
+            "Mise en place de pipelines CI/CD (GitHub Actions, GitLab CI)",
+            "Infrastructure as Code et Cloud Computing",
+            "Administration Système Linux et Scripting avancé"
+        ],
+        icon: <FaGraduationCap />,
+        color: "violet"
+    }
+    {
         id: 1,
         type: "education",
         title: "Licence 3 Métiers du Numérique",
