@@ -74,7 +74,7 @@ export default function Contact() {
 
               {/* Bouton CV */}
               <motion.a
-                href="/CV_Raphael_Verchain.pdf" // Assurez-vous que le fichier est bien dans le dossier public
+                href="/CV_Raphael_VERCHAIN.pdf" // Assurez-vous que le fichier est bien dans le dossier public
                 target="_blank"
                 rel="noopener noreferrer"
                 className="px-8 py-4 bg-[#1a1a2e] border border-gray-700 hover:border-teal-500/50 rounded-xl text-white font-medium text-lg flex items-center gap-3 transition-colors duration-300 group"
