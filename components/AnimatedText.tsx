@@ -39,7 +39,6 @@ export default function AnimatedText() {
             'DevOps & Cloud',
             'Créateur de sites modernes', 
             'Passionné de tech ⚡', 
-            'Amateur de design UI/UX',
             'Explorateur de nouvelles technologies'
         ]}
           loop={0}
