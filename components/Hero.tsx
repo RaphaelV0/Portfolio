@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 import Avatar from "./Avatar";
 import AnimatedText from "./AnimatedText";
 import SocialLinks from "./SocialLink";
-import { FaFileDownload } from "react-icons/fa";
 
 
 export default function Hero() {
