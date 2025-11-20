@@ -4,17 +4,17 @@ import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 
 export default function LoadingScreen() {
-    const [isLoading, setIsLoading] = useState(true);
+    const [isVisible, setIsVisible] = useState(true);
 
     useEffect(() => {
         const timer = setTimeout(() => {
-            setIsLoading(false);
-        }, 2000);
+            setIsVisible(false);
+        }, 2300); // Attendre la fin de l'animation
 
         return () => clearTimeout(timer);
     }, []);
 
-    if (!isLoading) return null;
+    if (!isVisible) return null;
 
     return (
         <motion.div
@@ -22,7 +22,7 @@ export default function LoadingScreen() {
             animate={{ opacity: 0 }}
             transition={{ duration: 0.5, delay: 1.8 }}
             className="fixed inset-0 z-[100] bg-[#050816] flex items-center justify-center"
-            onAnimationComplete={() => setIsLoading(false)}
+            onAnimationComplete={() => setIsVisible(false)}
         >
             <div className="text-center">
                 <motion.div

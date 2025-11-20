@@ -15,7 +15,9 @@ export default function Home() {
   const { scrollYProgress } = useScroll();
 
   return (
-    <div className="min-h-screen bg-[#050816] text-white overflow-x-hidden relative selection:bg-teal-500/30 selection:text-teal-200">
+    <>
+      <LoadingScreen />
+      <div className="min-h-screen bg-[#050816] text-white overflow-x-hidden relative selection:bg-teal-500/30 selection:text-teal-200">
 
       <Background />
 
@@ -27,8 +29,6 @@ export default function Home() {
 
       {/* Contenu du site */}
       <div className="relative z-10">
-        <LoadingScreen />
-        <div className="min-h-screen bg-[#050816] text-white overflow-x-hidden relative selection:bg-teal-500/30 selection:text-teal-200"></div>
         <Navbar />
         <Hero />
         <Skills />
@@ -37,6 +37,7 @@ export default function Home() {
         <Contact />
         <Footer />
       </div>
-    </div>
+      </div>
+    </>
   );
 }
