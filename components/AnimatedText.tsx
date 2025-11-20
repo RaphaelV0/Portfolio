@@ -36,6 +36,7 @@ export default function AnimatedText() {
           words={[
             'Développeur Frontend', 
             'Développeur Backend', 
+            'DevOps & Cloud',
             'Créateur de sites modernes', 
             'Passionné de tech ⚡', 
             'Amateur de design UI/UX',

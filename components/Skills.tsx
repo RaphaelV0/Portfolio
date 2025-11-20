@@ -2,9 +2,17 @@
 
 import { motion, useMotionTemplate, useMotionValue } from "framer-motion";
 import { FaCode, FaLaptopCode, FaServer, FaCloud } from "react-icons/fa";
-import { MouseEvent } from "react";
+import { MouseEvent, ReactNode } from "react";
 
-const skills = [
+// Définition du type pour éviter l'erreur "Unexpected any"
+interface SkillType {
+    icon: ReactNode;
+    title: string;
+    description: string;
+    technologies: string[];
+}
+
+const skills: SkillType[] = [
     {
         icon: <FaCode className="text-4xl text-violet-400" />,
         title: "Front-End",
@@ -31,11 +39,11 @@ const skills = [
     }
 ];
 
-function SkillCard({ skill, index }: { skill: any, index: number }) {
+function SkillCard({ skill, index }: { skill: SkillType; index: number }) {
     const mouseX = useMotionValue(0);
     const mouseY = useMotionValue(0);
 
-    function handleMouseMove({ currentTarget, clientX, clientY }: MouseEvent) {
+    function handleMouseMove({ currentTarget, clientX, clientY }: MouseEvent<HTMLDivElement>) {
         const { left, top } = currentTarget.getBoundingClientRect();
         mouseX.set(clientX - left);
         mouseY.set(clientY - top);
@@ -48,9 +56,9 @@ function SkillCard({ skill, index }: { skill: any, index: number }) {
             transition={{ duration: 0.5, delay: index * 0.1 }}
             viewport={{ once: true, amount: 0.3 }}
             onMouseMove={handleMouseMove}
-            className="group relative rounded-xl bg-[#0a0a1a] border border-white/10 overflow-hidden"
+            className="group relative rounded-xl bg-[#0a0a1a] border border-white/10 overflow-hidden h-full"
         >
-            {/* Effet Spotlight (Lumière qui suit la souris) */}
+            {/* Spotlight Effect */}
             <motion.div
                 className="pointer-events-none absolute -inset-px rounded-xl opacity-0 transition duration-300 group-hover:opacity-100"
                 style={{
@@ -64,7 +72,7 @@ function SkillCard({ skill, index }: { skill: any, index: number }) {
                 }}
             />
             
-            {/* Bordure lumineuse au survol */}
+            {/* Border Glow */}
             <motion.div
                 className="pointer-events-none absolute -inset-px rounded-xl opacity-0 transition duration-300 group-hover:opacity-100"
                 style={{
@@ -75,20 +83,20 @@ function SkillCard({ skill, index }: { skill: any, index: number }) {
                           transparent 80%
                         )
                     `,
-                    maskImage: `linear-gradient(black, black) content-box, linear-gradient(black, black)`,
-                    WebkitMaskImage: `linear-gradient(black, black) content-box, linear-gradient(black, black)`,
-                    maskComposite: `exclude`,
-                    WebkitMaskComposite: `xor`,
                 }}
             />
 
-            <div className="relative h-full p-6">
+            <div className="relative h-full p-6 flex flex-col">
                 <div className="flex flex-col items-start h-full">
                     <div className="mb-4 p-3 rounded-lg bg-white/5 border border-white/10 backdrop-blur-sm">
                         {skill.icon}
                     </div>
-                    <h3 className="text-xl font-semibold mb-2 text-white group-hover:text-violet-300 transition-colors">{skill.title}</h3>
-                    <p className="text-gray-400 mb-6 text-sm flex-grow">{skill.description}</p>
+                    <h3 className="text-xl font-semibold mb-2 text-white group-hover:text-violet-300 transition-colors">
+                        {skill.title}
+                    </h3>
+                    <p className="text-gray-400 mb-6 text-sm flex-grow">
+                        {skill.description}
+                    </p>
                     <div className="flex flex-wrap gap-2 mt-auto">
                         {skill.technologies.map((tech: string, techIndex: number) => (
                             <span
