@@ -63,7 +63,7 @@ export default function Hero() {
                         className="mt-12 flex flex-col sm:flex-row gap-4 justify-center"
                     >
                         <motion.a
-                            href="#parcours"
+                            href="#competences"
                             className="px-8 py-3 bg-gradient-to-r from-violet-500 to-blue-600 rounded-full text-white font-medium 
              hover:shadow-lg hover:shadow-violet-500/20 transition-all duration-300 inline-block"
                             whileHover={{ scale: 1.05 }}
