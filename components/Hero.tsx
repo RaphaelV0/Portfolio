@@ -75,32 +75,7 @@ export default function Hero() {
                     </motion.div>
                 </motion.div>
             </div>
-            <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 1.5, duration: 0.8 }}
-                className="mt-12 flex flex-col sm:flex-row gap-4 justify-center items-center"
-            >
-                <motion.a
-                    href="#parcours"
-                    className="px-8 py-3 bg-gradient-to-r from-violet-500 to-blue-600 rounded-full text-white font-medium 
-             hover:shadow-lg hover:shadow-violet-500/20 transition-all duration-300 inline-block"
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                >
-                    Découvrir mon profil
-                </motion.a>
 
-                <motion.a
-                    href="/CV_Raphael_Verchain.pdf"
-                    target="_blank"
-                    className="px-8 py-3 bg-transparent border border-gray-600 hover:border-teal-400 rounded-full text-gray-300 hover:text-white font-medium transition-all duration-300 flex items-center gap-2"
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                >
-                    <FaFileDownload /> CV
-                </motion.a>
-            </motion.div>
             {/* Scroll indicator */}
             <motion.div
                 className="absolute bottom-10 left-1/2 transform -translate-x-1/2"
