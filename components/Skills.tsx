@@ -1,7 +1,8 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { FaCode, FaLaptopCode, FaServer, FaCloud } from "react-icons/fa"; // Remplacer FaTools par FaCloud
+import { motion, useMotionTemplate, useMotionValue } from "framer-motion";
+import { FaCode, FaLaptopCode, FaServer, FaCloud } from "react-icons/fa";
+import { MouseEvent } from "react";
 
 const skills = [
     {
@@ -23,19 +24,90 @@ const skills = [
         technologies: ["TypeScript", "JavaScript", "Python", "PHP", "REST API"]
     },
     {
-        icon: <FaCloud className="text-4xl text-violet-400" />, // Nouvelle icône et couleur
-        title: "DevOps & Cloud", // Nouveau titre
+        icon: <FaCloud className="text-4xl text-violet-400" />,
+        title: "DevOps & Cloud",
         description: "Automatisation des déploiements, conteneurisation et gestion d'infrastructure.",
-        technologies: ["Docker", "Kubernetes", "CI/CD", "GitHub Actions", "Linux", "Git"] // Nouvelles technos
+        technologies: ["Docker", "Kubernetes", "CI/CD", "GitHub Actions", "Linux", "Git"]
     }
 ];
+
+function SkillCard({ skill, index }: { skill: any, index: number }) {
+    const mouseX = useMotionValue(0);
+    const mouseY = useMotionValue(0);
+
+    function handleMouseMove({ currentTarget, clientX, clientY }: MouseEvent) {
+        const { left, top } = currentTarget.getBoundingClientRect();
+        mouseX.set(clientX - left);
+        mouseY.set(clientY - top);
+    }
+
+    return (
+        <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: index * 0.1 }}
+            viewport={{ once: true, amount: 0.3 }}
+            onMouseMove={handleMouseMove}
+            className="group relative rounded-xl bg-[#0a0a1a] border border-white/10 overflow-hidden"
+        >
+            {/* Effet Spotlight (Lumière qui suit la souris) */}
+            <motion.div
+                className="pointer-events-none absolute -inset-px rounded-xl opacity-0 transition duration-300 group-hover:opacity-100"
+                style={{
+                    background: useMotionTemplate`
+                        radial-gradient(
+                          650px circle at ${mouseX}px ${mouseY}px,
+                          rgba(139, 92, 246, 0.15),
+                          transparent 80%
+                        )
+                    `,
+                }}
+            />
+            
+            {/* Bordure lumineuse au survol */}
+            <motion.div
+                className="pointer-events-none absolute -inset-px rounded-xl opacity-0 transition duration-300 group-hover:opacity-100"
+                style={{
+                    background: useMotionTemplate`
+                        radial-gradient(
+                          400px circle at ${mouseX}px ${mouseY}px,
+                          rgba(139, 92, 246, 0.3),
+                          transparent 80%
+                        )
+                    `,
+                    maskImage: `linear-gradient(black, black) content-box, linear-gradient(black, black)`,
+                    WebkitMaskImage: `linear-gradient(black, black) content-box, linear-gradient(black, black)`,
+                    maskComposite: `exclude`,
+                    WebkitMaskComposite: `xor`,
+                }}
+            />
+
+            <div className="relative h-full p-6">
+                <div className="flex flex-col items-start h-full">
+                    <div className="mb-4 p-3 rounded-lg bg-white/5 border border-white/10 backdrop-blur-sm">
+                        {skill.icon}
+                    </div>
+                    <h3 className="text-xl font-semibold mb-2 text-white group-hover:text-violet-300 transition-colors">{skill.title}</h3>
+                    <p className="text-gray-400 mb-6 text-sm flex-grow">{skill.description}</p>
+                    <div className="flex flex-wrap gap-2 mt-auto">
+                        {skill.technologies.map((tech: string, techIndex: number) => (
+                            <span
+                                key={techIndex}
+                                className="text-xs bg-white/5 border border-white/10 px-2 py-1 rounded-md text-gray-300 group-hover:border-violet-500/30 transition-colors"
+                            >
+                                {tech}
+                            </span>
+                        ))}
+                    </div>
+                </div>
+            </div>
+        </motion.div>
+    );
+}
 
 export default function Skills() {
     return (
         <section id="competences" className="py-24 relative">
-            {/* Overlay léger spécifique à cette section */}
-            <div className="absolute inset-0 bg-[#070A1B] opacity-30" />
-            
             <div className="container mx-auto px-4 relative z-10">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
@@ -48,37 +120,13 @@ export default function Skills() {
                         Mes Compétences
                     </h2>
                     <p className="text-gray-400 max-w-2xl mx-auto">
-                        Un ensemble de technologies et d&apos;outils maîtrisés pour développer des applications web performantes et élégantes.
+                        Un ensemble de technologies et d&apos;outils maîtrisés pour développer des applications web performantes.
                     </p>
                 </motion.div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                     {skills.map((skill, index) => (
-                        <motion.div
-                            key={index}
-                            initial={{ opacity: 0, y: 30 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.5, delay: index * 0.1 }}
-                            viewport={{ once: true, amount: 0.3 }}
-                            whileHover={{ y: -5, transition: { duration: 0.2 } }}
-                            className="bg-[#0a0a1a] p-6 rounded-xl border border-gray-800 hover:border-gray-700 transition-all duration-300"
-                        >
-                            <div className="flex flex-col items-start">
-                                <div className="mb-4">{skill.icon}</div>
-                                <h3 className="text-xl font-semibold mb-2">{skill.title}</h3>
-                                <p className="text-gray-400 mb-4 text-sm">{skill.description}</p>
-                                <div className="flex flex-wrap gap-2">
-                                    {skill.technologies.map((tech, techIndex) => (
-                                        <span
-                                            key={techIndex}
-                                            className="text-xs bg-[#151530] px-2 py-1 rounded-full text-gray-300"
-                                        >
-                                            {tech}
-                                        </span>
-                                    ))}
-                                </div>
-                            </div>
-                        </motion.div>
+                        <SkillCard key={index} skill={skill} index={index} />
                     ))}
                 </div>
             </div>
