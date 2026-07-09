@@ -102,7 +102,7 @@ export default function Skills() {
             Inventaire technique
           </h2>
           <p className="mt-4 max-w-2xl font-mono text-base leading-7 text-slate-400">
-            Référentiel des technologies maîtrisées, classées par domaine d'application système et infrastructure.
+            Référentiel des technologies maîtrisées, classées par domaine d&apos;application système et infrastructure.
           </p>
         </motion.div>
 

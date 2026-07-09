@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { FaCheck, FaCopy, FaFileDownload, FaPaperPlane } from "react-icons/fa";
+import { FaCheck } from "react-icons/fa";
 import { motion } from "framer-motion";
 
 export default function Contact() {
@@ -41,7 +41,7 @@ export default function Contact() {
 
             <div className="space-y-4 max-w-xl leading-relaxed text-slate-400">
               <p>
-                Je suis actuellement à la recherche d&apos;une
+                Je suis actuellement à la recherche d'une
                 <span
                   className="text-[#7EE787] font-mono bg-[#7EE787]/10 px-1 mx-0.5 rounded-sm relative top-[-2px]"
                   style={{ color: "#e5e9ec" }}
@@ -53,7 +53,7 @@ export default function Contact() {
               <p>
                 Échangeons sur vos besoins en infrastructure, Cloud Computing ou
                 DevOps. Mes compétences sont orientées vers la résolution de
-                problèmes complexes et l'automatisation.
+                problèmes complexes et l&apos;automatisation.
               </p>
 
               {/* CLI Status Tags */}

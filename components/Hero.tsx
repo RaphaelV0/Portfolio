@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import SocialLinks from "./SocialLink";
 
 export default function Hero() {
   return (
@@ -36,14 +35,14 @@ export default function Hero() {
             </div>
             <div className="text-slate-400 leading-relaxed space-y-4">
               <p>
-                Passionné par l'automatisation et l'infrastructure scalable.
+                Passionné par l&apos;automatisation et l&apos;infrastructure scalable.
               </p>
               <p>
-                Actuellement à la recherche d'une alternance M2 en Cloud &
+                Actuellement à la recherche d&apos;une alternance M2 en Cloud &
                 Mobility pour 2026-2027.
               </p>
               <p className="text-[#7EE787]">
-                &gt; Statut: Disponible immédiatement
+                &gt; Statut : Disponible immédiatement
               </p>
             </div>
           </div>
