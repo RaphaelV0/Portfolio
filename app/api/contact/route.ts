@@ -7,7 +7,7 @@ export async function POST(req: Request) {
 
     const { name, email, message } = await req.json();
 
-    const fromAddress = 'Portfolio Contact <contact@raphaelverchain.fr>'; // ou onboarding@resend.dev en attendant
+    const fromAddress = 'Portfolio Contact <contact@raphaelverchain.fr>';
 
     await resend.emails.send({
       from: fromAddress,
