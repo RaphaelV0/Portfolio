@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import Script from "next/script";
 import { Geist, Geist_Mono } from "next/font/google";
-import { Analytics } from "@vercel/analytics/next"
-import { SpeedInsights } from "@vercel/speed-insights/next"
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 import "./globals.css";
 
@@ -17,17 +17,16 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Portfolio de Raphaël Verchain",
-  description: "Portfolio personnel de Raphaël Verchain, développeur web passionné",
+  title: "Raphaël Verchain | Portfolio Cloud & DevOps",
+  description:
+    "Portfolio de Raphaël Verchain, Ingénieur Cloud et DevOps Junior en recherche d'alternance M2.",
   icons: {
     icon: [
       { url: "/favicon.ico", type: "image/x-icon" },
       { url: "/favicon-16x16.png", type: "image/png", sizes: "16x16" },
       { url: "/favicon-32x32.png", type: "image/png", sizes: "32x32" },
     ],
-    apple: [
-      { url: "/favicon-32x32.png", type: "image/png", sizes: "32x32" },
-    ],
+    apple: [{ url: "/favicon-32x32.png", type: "image/png", sizes: "32x32" }],
   },
 };
 
@@ -38,15 +37,21 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fr">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+      <body className={`${geistSans.variable} ${geistMono.variable}`}>
         {/* Google Tag Manager - Partie body (noscript) */}
-        <noscript dangerouslySetInnerHTML={{
-          __html: `
+        <noscript
+          dangerouslySetInnerHTML={{
+            __html: `
           <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-54WGQRVC"
           height="0" width="0" style="display:none;visibility:hidden"></iframe>
-        `}} />
+        `,
+          }}
+        />
 
-        {children}
+        {/* Central Control Interface */}
+        <main className="w-full px-4 sm:px-6 lg:px-8 pt-8 pb-12">
+          {children}
+        </main>
 
         {/* Google Tag Manager - Script */}
         <Script id="gtm-script" strategy="afterInteractive">
@@ -56,7 +61,7 @@ export default function RootLayout({
           'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
           })(window,document,'script','dataLayer','GTM-54WGQRVC');`}
         </Script>
-        
+
         {/* Google Analytics */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-P1BCX9K325"
@@ -70,6 +75,7 @@ export default function RootLayout({
             gtag('config', 'G-P1BCX9K325');
           `}
         </Script>
+
         <Analytics />
         <SpeedInsights />
       </body>

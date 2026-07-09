@@ -1,99 +1,117 @@
 "use client";
 
 import { useState } from "react";
-import { FaCheck, FaCopy, FaFileDownload, FaPaperPlane } from "react-icons/fa";
 import { motion } from "framer-motion";
 
 export default function Contact() {
-  const [emailCopied, setEmailCopied] = useState(false);
+  const [status, setStatus] = useState<string>("");
 
-  const handleCopyEmail = () => {
-    navigator.clipboard.writeText("raphaelverchain@gmail.com")
-      .then(() => {
-        setEmailCopied(true);
-        setTimeout(() => setEmailCopied(false), 3000);
-      })
-      .catch(err => console.error("Erreur copie:", err));
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setStatus("TRANSMITTING_DATA...");
+
+    const formData = new FormData(e.currentTarget);
+    const data = {
+      name: formData.get("name"),
+      email: formData.get("email"),
+      message: formData.get("message"),
+    };
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+
+      if (response.ok) {
+        setStatus("SUCCESS: Packet delivered.");
+        (e.target as HTMLFormElement).reset(); // Vide le formulaire
+      } else {
+        setStatus("ERROR: Connection refused.");
+      }
+    } catch (error) {
+      setStatus("ERROR: Network failure.");
+    }
   };
 
   return (
-    <section id="contact" className="py-24 relative overflow-hidden">
-      {/* Arrière-plan décoratif */}
-      <div className="absolute inset-0 bg-[#070A1B] opacity-30" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-blue-600/10 rounded-full blur-[100px] pointer-events-none" />
-
-      <div className="container mx-auto px-4 relative z-10">
+    <section id="contact" className="py-24 border-t border-b border-[#30363d] bg-[#0D1117]">
+      <div className="container mx-auto px-4 max-w-5xl">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true, amount: 0.3 }}
-          className="max-w-4xl mx-auto"
+          transition={{ duration: 0.6 }}
+          className="grid lg:grid-cols-[1fr_400px] gap-12 items-start"
         >
-          <div className="relative bg-[#0a0a1a]/80 backdrop-blur-xl p-8 md:p-12 rounded-3xl border border-white/10 shadow-2xl overflow-hidden">
-            {/* Effet de brillance sur la bordure supérieure */}
-            <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-violet-500 to-transparent opacity-50" />
-
-            <div className="text-center mb-10">
-              <h2 className="text-3xl md:text-5xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-violet-400 via-blue-400 to-teal-400">
-                Travaillons ensemble
-              </h2>
-              <p className="text-gray-300 text-lg max-w-2xl mx-auto">
-                Je suis actuellement à la recherche d&apos;opportunités en <span className="text-violet-400 font-semibold">alternance</span> ou en <span className="text-blue-400 font-semibold">CDI</span>.
-                N&apos;hésitez pas à me contacter !
-              </p>
-            </div>
-
-            <div className="flex flex-col md:flex-row gap-6 justify-center items-center">
-              {/* Bouton Email */}
-              <div className="relative group">
-                <motion.button
-                  onClick={handleCopyEmail}
-                  className="relative px-8 py-4 bg-gradient-to-r from-violet-600 to-blue-600 rounded-xl text-white font-bold text-lg shadow-lg shadow-violet-900/20 flex items-center gap-3 overflow-hidden"
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                >
-                  <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
-                  <FaPaperPlane />
-                  <span>raphaelverchain@gmail.com</span>
-                  {emailCopied ? <FaCheck className="text-green-300" /> : <FaCopy className="text-white/70" />}
-                </motion.button>
-
-                {/* Tooltip confirmation */}
-                {emailCopied && (
-                  <motion.div
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: 10 }}
-                    className="absolute -bottom-10 left-1/2 -translate-x-1/2 text-xs text-teal-400 font-medium bg-black/50 px-2 py-1 rounded backdrop-blur-sm whitespace-nowrap"
-                  >
-                    Copié !
-                  </motion.div>
-                )}
-              </div>
-
-              {/* Bouton CV */}
-              <motion.a
-                href="/CV_Raphael_VERCHAIN.pdf" // Assurez-vous que le fichier est bien dans le dossier public
+          {/* Colonne Gauche */}
+          <div>
+            <p className="font-mono text-[#7EE787] text-sm">/usr/bin/init_contact.sh</p>
+            <h2 className="text-3xl font-semibold text-[#e5e9ec] mt-2 mb-6">Initier une connexion</h2>
+            
+            <div className="space-y-6 text-slate-400 font-mono text-sm leading-7">
+              <p>Recherche active : <span className="text-white">Alternance M2 Cloud, Infra, DevOps & DevSecOps</span>.</p>
+              <p>Disponible pour échanger sur vos besoins en automatisation et infrastructure scalable.</p>
+              
+              {/* CV Download intégré */}
+              <a
+                href="/CV_Raphael_VERCHAIN.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-8 py-4 bg-[#1a1a2e] border border-gray-700 hover:border-teal-500/50 rounded-xl text-white font-medium text-lg flex items-center gap-3 transition-colors duration-300 group"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
+                className="inline-flex items-center gap-2 text-[#D2A8FF] hover:text-white transition-colors"
               >
-                <FaFileDownload className="text-teal-400 group-hover:translate-y-1 transition-transform" />
-                <span>Télécharger mon CV</span>
-              </motion.a>
-            </div>
+                <span>&gt; wget</span> CV_Raphael_VERCHAIN.pdf
+              </a>
 
-            {/* Footer de la carte */}
-            <div className="mt-12 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500 gap-4">
-              <p>Basé à Saint-Quentin, France</p>
-              <div className="flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-                <span className="text-green-400">Disponible immédiatement</span>
+              <div className="pt-2 flex flex-wrap gap-4">
+                <span className="border border-[#7EE787] text-[#7EE787] px-3 py-1 font-mono text-xs">✔ Disponible immédiatement</span>
+                <span className="border border-[#30363d] text-slate-500 px-3 py-1 font-mono text-xs">Saint-Quentin, Hauts-de-France</span>
               </div>
             </div>
+          </div>
+
+          {/* Colonne Droite : Formulaire CLI */}
+          <div className="border border-[#30363d] bg-[#0d1117] p-6">
+            <div className="flex items-center justify-between text-xs font-mono text-slate-500 border-b border-[#30363d] pb-4 mb-6">
+              <span>root@terminal:~$</span>
+              <div className="w-2 h-2 rounded-full bg-[#7EE787] animate-pulse" />
+            </div>
+
+            <form onSubmit={handleSubmit} className="space-y-4 font-mono text-sm">
+              <input 
+                name="name" 
+                required 
+                type="text" 
+                placeholder="name@user" 
+                className="w-full bg-transparent border-b border-[#30363d] focus:border-[#7EE787] outline-none text-slate-300 py-1" 
+              />
+              <input 
+                name="email" 
+                required 
+                type="email" 
+                placeholder="email@address" 
+                className="w-full bg-transparent border-b border-[#30363d] focus:border-[#7EE787] outline-none text-slate-300 py-1" 
+              />
+              <textarea 
+                name="message" 
+                required 
+                placeholder="message_body..." 
+                className="w-full bg-transparent border-b border-[#30363d] focus:border-[#7EE787] outline-none text-slate-300 py-1 h-20 resize-none" 
+              />
+              
+              <button 
+                type="submit" 
+                className="w-full py-2 border border-[#7EE787] text-[#7EE787] hover:bg-[#7EE787]/10 transition-all font-mono text-xs mt-2"
+              >
+                RUN_SEND_REQUEST
+              </button>
+            </form>
+
+            {status && (
+              <p className={`mt-4 text-xs font-mono animate-pulse ${status.includes('ERROR') ? 'text-red-400' : 'text-[#7EE787]'}`}>
+                {status}
+              </p>
+            )}
           </div>
         </motion.div>
       </div>
