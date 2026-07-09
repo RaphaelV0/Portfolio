@@ -41,7 +41,7 @@ export default function Contact() {
 
             <div className="space-y-4 max-w-xl leading-relaxed text-slate-400">
               <p>
-                Je suis actuellement à la recherche d'une
+                Je suis actuellement à la recherche d&apos;une
                 <span
                   className="text-[#7EE787] font-mono bg-[#7EE787]/10 px-1 mx-0.5 rounded-sm relative top-[-2px]"
                   style={{ color: "#e5e9ec" }}
