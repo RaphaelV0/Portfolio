@@ -122,7 +122,7 @@ export async function POST(req: Request) {
     await resend.emails.send({
       from: fromAddress,
       to: 'raphaelverchain@gmail.com',
-      replyTo: email,
+      replyTo: fromAddress,
       subject: `[Portfolio] Transmission de ${name}`,
       text: `Expéditeur: ${name}\nEmail: ${email}\nDate: ${date}\n\nMessage:\n${message}`,
       html: htmlContent,
