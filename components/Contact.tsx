@@ -15,6 +15,8 @@ export default function Contact() {
       name: formData.get("name"),
       email: formData.get("email"),
       message: formData.get("message"),
+      // On récupère la valeur du piège
+      system_check: formData.get("system_check"), 
     };
 
     try {
@@ -26,7 +28,7 @@ export default function Contact() {
 
       if (response.ok) {
         setStatus("SUCCESS: Packet delivered.");
-        (e.target as HTMLFormElement).reset(); // Vide le formulaire
+        (e.target as HTMLFormElement).reset();
       } else {
         setStatus("ERROR: Connection refused.");
       }
@@ -78,6 +80,17 @@ export default function Contact() {
             </div>
 
             <form onSubmit={handleSubmit} className="space-y-4 font-mono text-sm">
+              
+              {/* HONEYPOT : Champ invisible pour piéger les bots */}
+              <input 
+                type="text" 
+                name="system_check" 
+                tabIndex={-1} 
+                autoComplete="off" 
+                // On utilise absolute et opacity-0 plutôt que hidden, car certains bots ignorent "display: none"
+                className="absolute opacity-0 -z-10 w-0 h-0" 
+              />
+
               <input 
                 name="name" 
                 required 
