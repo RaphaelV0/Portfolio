@@ -14,7 +14,7 @@ interface ExperienceItem {
 const experiencesData: ExperienceItem[] = [
   {
     type: "work",
-    title: "Administrateur Systèmes & DevOps — Stage M2",
+    title: "Administrateur Systèmes & DevOps — Stage M1",
     entity: "InnovQube (Noisy-le-Grand)",
     date: "Avril 2026 - Juillet 2026",
     description: [
@@ -27,7 +27,7 @@ const experiencesData: ExperienceItem[] = [
   },
   {
     type: "work",
-    title: "Développeur FullStack & DevOps — Stage M2",
+    title: "Développeur FullStack & DevOps — Stage M1",
     entity: "Cousin Nicolas (Amiens)",
     date: "Février 2026 - Avril 2026",
     description: [
@@ -38,7 +38,7 @@ const experiencesData: ExperienceItem[] = [
   },
   {
     type: "study",
-    title: "Master Cloud Computing & Mobility (M2)",
+    title: "Master Cloud Computing & Mobility",
     entity: "INSSET",
     date: "Septembre 2025 - Juillet 2027",
     description: ["Formation cloud, mobilité et infrastructures modernes."],

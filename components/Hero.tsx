@@ -27,7 +27,7 @@ export default function Hero() {
             </p>
           </div>
 
-          {/* Bloc de status unique et épuré (remplace les 3 blocs chargés) */}
+          {/* Bloc de status mis à jour */}
           <div className="border border-[#30363d] bg-[#0d1117] p-8 font-mono">
             <div className="flex items-center gap-2 mb-6 border-b border-[#30363d] pb-4">
               <span className="text-[#D2A8FF]">root@raphael:~$</span>
@@ -38,8 +38,7 @@ export default function Hero() {
                 Passionné par l&apos;automatisation et l&apos;infrastructure scalable.
               </p>
               <p>
-                Actuellement à la recherche d&apos;une alternance M2 en Cloud &
-                Mobility pour 2026-2027.
+                Recherche alternance M2 en <span className="text-[#79C0FF]">Cloud, Infra, DevOps & DevSecOps</span> pour 2026-2027.
               </p>
               <p className="text-[#7EE787]">
                 &gt; Statut : Disponible immédiatement
@@ -47,7 +46,7 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* Call to action épuré */}
+          {/* Call to action */}
           <div className="flex items-center gap-8">
             <a
               href="#competences"
