@@ -1,90 +1,70 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Avatar from "./Avatar";
-import AnimatedText from "./AnimatedText";
 import SocialLinks from "./SocialLink";
 
-
 export default function Hero() {
-    return (
-        <section id="accueil" className="relative min-h-screen overflow-hidden text-white flex items-center justify-center">
-            {/* Content */}
-            <div className="relative z-10 container mx-auto px-4 py-20 flex flex-col items-center justify-center">
-                <motion.div
-                    initial={{ opacity: 0, y: -50 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8 }}
-                    className="text-center"
-                >
-                    <Avatar />
+  return (
+    <section
+      id="accueil"
+      className="relative py-32 border-b bg-[#0D1117] border-[#30363d]"
+    >
+      <div className="container mx-auto px-4 max-w-5xl">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="flex flex-col gap-12"
+        >
+          {/* Header minimaliste */}
+          <div className="space-y-4">
+            <p className="font-mono text-[#7EE787] text-sm">
+              &gt; system_identity --load
+            </p>
+            <h1 className="text-5xl md:text-7xl font-bold text-white tracking-tight">
+              Raphaël Verchain
+            </h1>
+            <p className="font-mono text-xl text-slate-400">
+              Cloud & DevOps Engineer / Alternance M2
+            </p>
+          </div>
 
-                    <motion.h1
-                        className="mt-8 text-4xl md:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-violet-400 via-blue-400 to-teal-400"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ delay: 0.3, duration: 0.8 }}
-                    >
-                        Salut, moi c&apos;est Raphaël Verchain
-                    </motion.h1>
-
-                    <motion.div
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ delay: 0.6, duration: 0.8 }}
-                        className="mt-6"
-                    >
-                        <AnimatedText />
-                    </motion.div>
-
-                    <motion.p
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ delay: 0.9, duration: 0.8 }}
-                        className="mt-6 max-w-xl mx-auto text-gray-300"
-                    >
-                        Je crée des expériences web innovantes et intuitives,
-                        en combinant design moderne et performances techniques.
-                    </motion.p>
-
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 1.2, duration: 0.8 }}
-                        className="mt-8"
-                    >
-                        <SocialLinks />
-                    </motion.div>
-
-                    <motion.div
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ delay: 1.5, duration: 0.8 }}
-                        className="mt-12 flex flex-col sm:flex-row gap-4 justify-center"
-                    >
-                        <motion.a
-                            href="#competences"
-                            className="px-8 py-3 bg-gradient-to-r from-violet-500 to-blue-600 rounded-full text-white font-medium 
-             hover:shadow-lg hover:shadow-violet-500/20 transition-all duration-300 inline-block"
-                            whileHover={{ scale: 1.05 }}
-                            whileTap={{ scale: 0.95 }}
-                        >
-                            Découvrir mon profil
-                        </motion.a>
-                    </motion.div>
-                </motion.div>
+          {/* Bloc de status unique et épuré (remplace les 3 blocs chargés) */}
+          <div className="border border-[#30363d] bg-[#0d1117] p-8 font-mono">
+            <div className="flex items-center gap-2 mb-6 border-b border-[#30363d] pb-4">
+              <span className="text-[#D2A8FF]">root@raphael:~$</span>
+              <span className="text-slate-300">cat profile.log</span>
             </div>
+            <div className="text-slate-400 leading-relaxed space-y-4">
+              <p>
+                Passionné par l'automatisation et l'infrastructure scalable.
+              </p>
+              <p>
+                Actuellement à la recherche d'une alternance M2 en Cloud &
+                Mobility pour 2026-2027.
+              </p>
+              <p className="text-[#7EE787]">
+                &gt; Statut: Disponible immédiatement
+              </p>
+            </div>
+          </div>
 
-            {/* Scroll indicator */}
-            <motion.div
-                className="absolute bottom-10 left-1/2 transform -translate-x-1/2"
-                animate={{ y: [0, 10, 0] }}
-                transition={{ repeat: Infinity, duration: 1.5 }}
+          {/* Call to action épuré */}
+          <div className="flex items-center gap-8">
+            <a
+              href="#competences"
+              className="font-mono text-sm text-white hover:text-[#7EE787] transition-colors border-b border-transparent hover:border-[#7EE787]"
             >
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M12 5V19M12 19L5 12M12 19L19 12" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-            </motion.div>
-        </section>
-    );
+              [CD ./STACK]
+            </a>
+            <a
+              href="#projets"
+              className="font-mono text-sm text-white hover:text-[#7EE787] transition-colors border-b border-transparent hover:border-[#7EE787]"
+            >
+              [CD ./PROJETS]
+            </a>
+          </div>
+        </motion.div>
+      </div>
+    </section>
+  );
 }

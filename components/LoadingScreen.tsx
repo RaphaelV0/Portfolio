@@ -21,12 +21,12 @@ export default function LoadingScreen() {
             initial={{ opacity: 1 }}
             animate={{ opacity: 0 }}
             transition={{ duration: 0.5, delay: 1.8 }}
-            className="fixed inset-0 z-[100] bg-[#050816] flex items-center justify-center"
+            className="fixed inset-0 z-[100] bg-[#0A0A0A] flex items-center justify-center"
             onAnimationComplete={() => setIsVisible(false)}
         >
             <div className="text-center">
                 <motion.div
-                    className="text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-violet-400 via-blue-400 to-teal-400 mb-6"
+                    className="mb-6 text-5xl font-semibold text-white font-mono"
                     initial={{ scale: 0.5, opacity: 0 }}
                     animate={{ scale: 1, opacity: 1 }}
                     transition={{ duration: 0.5 }}
@@ -43,8 +43,8 @@ export default function LoadingScreen() {
                     {[0, 1, 2].map((i) => (
                         <motion.div
                             key={i}
-                            className="w-3 h-3 rounded-full bg-gradient-to-r from-violet-500 to-blue-500"
-                            animate={{ scale: [1, 1.5, 1], opacity: [0.5, 1, 0.5] }}
+                            className="h-3 w-3 rounded-full bg-emerald-400"
+                            animate={{ scale: [1, 1.35, 1], opacity: [0.5, 1, 0.5] }}
                             transition={{ duration: 1, repeat: Infinity, delay: i * 0.2 }}
                         />
                     ))}

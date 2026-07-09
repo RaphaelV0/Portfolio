@@ -8,91 +8,154 @@ export default function Contact() {
   const [emailCopied, setEmailCopied] = useState(false);
 
   const handleCopyEmail = () => {
-    navigator.clipboard.writeText("raphaelverchain@gmail.com")
+    navigator.clipboard
+      .writeText("raphaelverchain@gmail.com")
       .then(() => {
         setEmailCopied(true);
         setTimeout(() => setEmailCopied(false), 3000);
       })
-      .catch(err => console.error("Erreur copie:", err));
+      .catch((err) => console.error("Erreur copie:", err));
   };
 
   return (
-    <section id="contact" className="py-24 relative overflow-hidden">
-      {/* Arrière-plan décoratif */}
-      <div className="absolute inset-0 bg-[#070A1B] opacity-30" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-blue-600/10 rounded-full blur-[100px] pointer-events-none" />
-
-      <div className="container mx-auto px-4 relative z-10">
+    <section
+      id="contact"
+      className="py-24 bg-[#0D1117] border-t border-b border-[#30363d]"
+    >
+      <div className="container mx-auto px-4 max-w-5xl relative z-10">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.6 }}
           viewport={{ once: true, amount: 0.3 }}
-          className="max-w-4xl mx-auto"
+          className="grid lg:grid-cols-[1fr_400px] gap-8 items-start"
         >
-          <div className="relative bg-[#0a0a1a]/80 backdrop-blur-xl p-8 md:p-12 rounded-3xl border border-white/10 shadow-2xl overflow-hidden">
-            {/* Effet de brillance sur la bordure supérieure */}
-            <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-violet-500 to-transparent opacity-50" />
+          {/* Colonne Gauche : Message & Infos */}
+          <div>
+            <p className="font-mono text-[#7EE787] text-sm">
+              /usr/bin/init_contact.sh
+            </p>
+            <h2 className="text-3xl font-semibold text-[#e5e9ec] mb-6">
+              Initier une connexion
+            </h2>
 
-            <div className="text-center mb-10">
-              <h2 className="text-3xl md:text-5xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-violet-400 via-blue-400 to-teal-400">
-                Travaillons ensemble
-              </h2>
-              <p className="text-gray-300 text-lg max-w-2xl mx-auto">
-                Je suis actuellement à la recherche d&apos;opportunités en <span className="text-violet-400 font-semibold">alternance</span> ou en <span className="text-blue-400 font-semibold">CDI</span>.
-                N&apos;hésitez pas à me contacter !
-              </p>
-            </div>
-
-            <div className="flex flex-col md:flex-row gap-6 justify-center items-center">
-              {/* Bouton Email */}
-              <div className="relative group">
-                <motion.button
-                  onClick={handleCopyEmail}
-                  className="relative px-8 py-4 bg-gradient-to-r from-violet-600 to-blue-600 rounded-xl text-white font-bold text-lg shadow-lg shadow-violet-900/20 flex items-center gap-3 overflow-hidden"
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
+            <div className="space-y-4 max-w-xl leading-relaxed text-slate-400">
+              <p>
+                Je suis actuellement à la recherche d&apos;une
+                <span
+                  className="text-[#7EE787] font-mono bg-[#7EE787]/10 px-1 mx-0.5 rounded-sm relative top-[-2px]"
+                  style={{ color: "#e5e9ec" }}
                 >
-                  <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
-                  <FaPaperPlane />
-                  <span>raphaelverchain@gmail.com</span>
-                  {emailCopied ? <FaCheck className="text-green-300" /> : <FaCopy className="text-white/70" />}
-                </motion.button>
+                  alternance
+                </span>
+                pour ma deuxième année de Master (M2).
+              </p>
+              <p>
+                Échangeons sur vos besoins en infrastructure, Cloud Computing ou
+                DevOps. Mes compétences sont orientées vers la résolution de
+                problèmes complexes et l'automatisation.
+              </p>
 
-                {/* Tooltip confirmation */}
-                {emailCopied && (
-                  <motion.div
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: 10 }}
-                    className="absolute -bottom-10 left-1/2 -translate-x-1/2 text-xs text-teal-400 font-medium bg-black/50 px-2 py-1 rounded backdrop-blur-sm whitespace-nowrap"
+              {/* CLI Status Tags */}
+              <div className="flex flex-wrap gap-3 mt-6 font-mono text-xs">
+                {[
+                  "Disponible immédiatement",
+                  "Saint-Quentin (02100)",
+                  "Full-time available",
+                ].map((status, i) => (
+                  <span
+                    key={i}
+                    className={`px-3 py-1 border rounded-sm ${
+                      i === 0
+                        ? "border-[#7EE787] text-[#7EE787]"
+                        : "border-[#30363d] text-slate-500"
+                    }`}
                   >
-                    Copié !
-                  </motion.div>
-                )}
+                    {i === 0 && <span className="mr-2">✔</span>}
+                    {status}
+                  </span>
+                ))}
               </div>
 
-              {/* Bouton CV */}
-              <motion.a
-                href="/CV_Raphael_VERCHAIN.pdf" // Assurez-vous que le fichier est bien dans le dossier public
+              {/* Contact Info Block */}
+              <div className="mt-8 p-4 rounded-md bg-[#161b22] border-l-2 border-[#D2A8FF]/50 font-mono text-sm space-y-2">
+                <p>
+                  <span className="text-slate-500 mr-2"># Target:</span> Cloud |
+                  DevOps | Infrastructure
+                </p>
+                <p>
+                  <span className="text-slate-500 mr-2"># Location:</span>{" "}
+                  Saint-Quentin, France / Hauts-De-France
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Colonne Droite : Actions */}
+          <div className="space-y-6">
+            {/* Info Card */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true, amount: 0.5 }}
+              transition={{ delay: 0.2 }}
+              className="rounded-lg border border-[#30363d] bg-[#161b22]/50 backdrop-blur-sm p-4 font-mono text-xs md:text-sm"
+            >
+              <div className="flex items-center justify-between mb-3 pb-3 border-b border-[#30363d]">
+                <span>./status</span>
+                <motion.span
+                  animate={{ opacity: [1, 0.5, 1], color: "#7EE787" }}
+                  transition={{ repeat: Infinity, duration: 2 }}
+                  className="w-2 h-2 rounded-full bg-[#7EE787] shadow-[0_0_8px_rgba(126,231,135,0.5)]"
+                />
+              </div>
+
+              <p className="text-slate-400 mb-1">
+                email: raphaelverchain@gmail.com
+              </p>
+              <p className="text-slate-400 mb-2 location">
+                location: Saint-Quentin (Aisne)
+              </p>
+            </motion.div>
+
+            {/* Copy Email Action */}
+            <div className="space-y-3">
+              <button
+                onClick={handleCopyEmail}
+                className={`w-full justify-center rounded-md border px-4 py-2 text-sm font-mono transition-all duration-200 flex items-center gap-3 group ${
+                  emailCopied
+                    ? "border-[#7EE787] bg-[#7EE787]/10 text-[#7EE787]"
+                    : "border-[#30363d] hover:border-[#D2A8FF] hover:text-white"
+                }`}
+              >
+                {emailCopied ? (
+                  <>
+                    <FaCheck className="text-sm" /> Copié !
+                  </>
+                ) : (
+                  <>
+                    <motion.span
+                      animate={{ x: [0, -3, 0] }}
+                      transition={{ repeat: Infinity, duration: 1.5 }}
+                      className={emailCopied ? "hidden" : ""}
+                    ></motion.span>
+                    <span>raphaelverchain@gmail.com</span>
+                  </>
+                )}
+              </button>
+
+              {/* CV Download Action */}
+              <a
+                href="/CV_Raphael_VERCHAIN.pdf" // Assurez-vous que le fichier existe dans public/ ou src/app/pdf-path...
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-8 py-4 bg-[#1a1a2e] border border-gray-700 hover:border-teal-500/50 rounded-xl text-white font-medium text-lg flex items-center gap-3 transition-colors duration-300 group"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
+                className={`w-full justify-center rounded-md border px-4 py-2 text-sm font-mono transition-all duration-200 flex items-center gap-3 ${
+                  "border-[#D2A8FF] hover:bg-[#D2A8FF]/10" // Utilise la couleur violette de Experience.tsx pour l'action principale ou un vert cohérent
+                }`}
               >
-                <FaFileDownload className="text-teal-400 group-hover:translate-y-1 transition-transform" />
-                <span>Télécharger mon CV</span>
-              </motion.a>
-            </div>
-
-            {/* Footer de la carte */}
-            <div className="mt-12 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500 gap-4">
-              <p>Basé à Saint-Quentin, France</p>
-              <div className="flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-                <span className="text-green-400">Disponible immédiatement</span>
-              </div>
+                <span className="text-xs font-mono">wget</span>{" "}
+                CV_Raphael_VERCHAIN.pdf
+              </a>
             </div>
           </div>
         </motion.div>
